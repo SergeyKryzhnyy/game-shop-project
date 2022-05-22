@@ -13,6 +13,8 @@
 <body>
 <div class="main-wrapper">
 
+
+
     @section('header')
     <header class="main-header">
         <div class="logotype-container"><a href="#" class="logotype-link"><img src="img/logo.png" alt="Логотип"></a></div>

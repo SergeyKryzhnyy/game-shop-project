@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GameController extends Controller
 {
@@ -11,7 +13,19 @@ class GameController extends Controller
     {
         $result['status'] = 'main';
         $game_list = 'game_list';
-        return view('index',['result'=>$result, 'game_list'=>$game_list]);
+
+        if (Auth::check())
+        {
+            $user = Auth::user();
+            $id = $user->id;
+            $result['admin'] = $user->admin;
+        }
+        else
+        {
+            $result['admin'] = 0;
+        }
+
+        return view('index',['result'=>$result, 'game_list'=>$game_list, 'admin'=>$result['admin']]);
     }
 
     public function newsAction(Request $request)

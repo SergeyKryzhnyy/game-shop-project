@@ -10,8 +10,18 @@
 
 @section('content')
 
-    @if ($result['status'] == 'main')
+
+
+
         <div class="content-middle">
+            @if ($result['status'] == 'main')
+                @if($result['admin'] == '1')
+                    <div class="content-head__title-wrap">
+                        <div class="content-head__title-wrap__title bcg-title">Добавить новую игру</div>
+                    </div>
+
+
+                @endif
         <div class="content-head__container">
             <div class="content-head__title-wrap">
                 <div class="content-head__title-wrap__title bcg-title">Последние товары</div>
