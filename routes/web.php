@@ -16,13 +16,15 @@ use App\Http\Controllers\GameController;
 |
 */
 
+
+
 Route::get('/', [GameController::class, 'indexAction'])->name('index');
 
-Route::get('news', [GameController::class, 'newsAction'])->name('index');
+Route::get('news', [GameController::class, 'newsAction'])->name('news');
 
-Route::get('about', [GameController::class, 'aboutAction'])->name('index');
+Route::get('about', [GameController::class, 'aboutAction'])->name('about');
 
-Route::get('order', [GameController::class, 'orderAction'])->name('index');
+Route::get('order', [GameController::class, 'orderAction'])->name('order');
 
 Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
 
@@ -37,3 +39,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
